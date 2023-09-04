@@ -10,7 +10,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@null2264'
       - name: Install dependencies
