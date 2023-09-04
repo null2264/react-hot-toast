@@ -14,9 +14,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
+          registry-url: 'https://npm.pkg.github.com'
       - name: Install dependencies
         run: pnpm install
       - name: Build package
         run: pnpm build
       - name: Test
         run: pnpm run test --ci --coverage
+      - name: Publish
+        run: pnpm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
